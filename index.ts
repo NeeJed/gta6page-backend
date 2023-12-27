@@ -1,3 +1,5 @@
+import dotenv from 'dotenv'
+dotenv.config()
 import express from 'express'
 import { PrismaClient } from '@prisma/client'
 import cors from 'cors';
@@ -10,6 +12,7 @@ app.use(cors())
 app.use(express.json())
 
 app.post('/api', async (req, res) => {
+    console.log(req)
     const {email, name} = req.body
     if (!email || !name) {
         return res.status(400).json({message: 'Email and name required fields'})
